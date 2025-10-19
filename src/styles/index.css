@@ -1,0 +1,10 @@
+@layer components;
+
+@import url("../components/tile/index.css") layer(components);
+@import url("../components/grid/index.css") layer(components);
+
+:root {
+  --tile-border-radius: 16px;
+
+  --tile-animation-duration: 350ms;
+}

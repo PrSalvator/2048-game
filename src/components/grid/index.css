@@ -1,0 +1,12 @@
+.grid-wrapper {
+  background-color: rgb(213, 213, 213);
+  width: fit-content;
+  height: fit-content;
+  padding: 16px;
+}
+
+.grid {
+  position: relative;
+  display: grid;
+  width: 100%;
+}
