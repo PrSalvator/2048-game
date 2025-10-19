@@ -4,7 +4,23 @@
 @import url("../components/grid/index.css") layer(components);
 
 :root {
-  --tile-border-radius: 16px;
+  --tile-border-radius: 8px;
 
-  --tile-animation-duration: 350ms;
+  /* colors */
+  --gray: #f2f2f2;
+  --yellow: #f2e530;
+  --purple: #5056bf;
+  --light-purple: #bcbbf2;
+  --blue: #030a8c;
+}
+
+.font-jaro {
+  font-family: "Jaro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background-color: var(--gray);
 }

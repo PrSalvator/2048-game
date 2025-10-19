@@ -4,7 +4,7 @@ import { getPixelPositionFromCoordinates } from "../../shared/utils";
 import { TILE_ANIMATION_DURATION, TILE_SIZE } from "../../shared/const";
 import clsx from "clsx";
 
-const Tile = ({ value, coordinates, id }: ITile) => {
+const Tile = ({ value, coordinates }: ITile) => {
   const prevValueRef = useRef<number>(undefined);
 
   const [scale, setScale] = useState<number>(1);
@@ -15,6 +15,7 @@ const Tile = ({ value, coordinates, id }: ITile) => {
     height: TILE_SIZE,
     transform: `scale(${scale})`,
     zIndex: value,
+    transitionDuration: `${TILE_ANIMATION_DURATION}ms`,
   };
 
   useEffect(() => {
@@ -29,8 +30,8 @@ const Tile = ({ value, coordinates, id }: ITile) => {
   }, [value]);
 
   return (
-    <div className={clsx("tile", `tile${value}`)} style={style}>
-      {value + " " + id.slice(0, 2)}
+    <div className={clsx("tile", `tile${value}`, "font-jaro")} style={style}>
+      {value}
     </div>
   );
 };

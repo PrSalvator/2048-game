@@ -1,6 +1,6 @@
-const TILE_SIZE = 100;
+const TILE_SIZE = 132;
 
-const TILES_PER_ROW_COUNT = 3;
+const TILES_PER_ROW_COUNT = 4;
 
 const TILE_GAP = 20;
 
