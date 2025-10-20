@@ -13,6 +13,8 @@ const SplashScreen = () => {
   useEffect(() => {
     if (gameState !== EGameState.PLAYING)
       setTimeout(() => setIsGamePlaying(false), TILE_ANIMATION_DURATION * 2);
+
+    if (isGamePlaying === false && gameState === EGameState.PLAYING) setIsGamePlaying(true);
   }, [gameState]);
 
   return (

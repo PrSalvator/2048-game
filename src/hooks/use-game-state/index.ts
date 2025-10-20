@@ -2,7 +2,7 @@ import type { ActionDispatch } from "react";
 import type { IGameReducerAction, IGameReducerState } from "../use-game/reducer/interface";
 import { EGameState } from "../../shared/enum";
 import { WIN_TILE_VALUE } from "../../shared/const";
-import { checkMovePossibility, getEmptyTilesCoordinates } from "../../shared/utils";
+import { checkMovePossibility, getUniqueRandomCoordinates } from "../../shared/utils";
 import type { ITileMap } from "../../models/tile";
 
 const useGameState = (
@@ -39,15 +39,19 @@ const useGameState = (
   };
 
   const startGame = (): void => {
-    const emptyTilesCoordinates = getEmptyTilesCoordinates(state.grid).sort(
-      () => Math.random() - 0.5
-    );
+    const emptyTilesCoordinates = getUniqueRandomCoordinates(2);
 
     dispatch({ type: "create_tile", coordinates: emptyTilesCoordinates[0] });
     dispatch({ type: "create_tile", coordinates: emptyTilesCoordinates[1] });
   };
 
-  return { checkGameState, startGame };
+  const restartGame = (): void => {
+    dispatch({ type: "reset" });
+
+    startGame();
+  };
+
+  return { checkGameState, startGame, restartGame };
 };
 
 export { useGameState };

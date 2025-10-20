@@ -17,6 +17,9 @@ type IGameReducerAction =
   | { type: "create_tile"; coordinates: ICoordinates }
   | { type: "move_tiles"; direction: EDirection }
   | { type: "merge_tiles" }
-  | { type: "set_game_state"; gameState: EGameState };
+  | { type: "set_game_state"; gameState: EGameState }
+  | {
+      type: "reset";
+    };
 
 export type { IGameReducerState, IGameReducerAction };

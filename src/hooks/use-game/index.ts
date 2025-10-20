@@ -1,21 +1,14 @@
 import { useEffect, useReducer } from "react";
 import { gameReducer } from "./reducer";
-import { initializeGrid } from "../../shared/utils";
 import { TILE_ANIMATION_DURATION } from "../../shared/const";
-import { EGameState } from "../../shared/enum";
 import { useGameState } from "../use-game-state";
 import { useTileManagement } from "../use-tile-management";
+import { INITIAL_REDUCER_STATE } from "./const";
 
 const useGame = () => {
-  const [state, dispatch] = useReducer(gameReducer, {
-    grid: initializeGrid(),
-    tiles: {},
-    isStateUpdated: false,
-    score: 0,
-    gameState: EGameState.PLAYING,
-  });
+  const [state, dispatch] = useReducer(gameReducer, INITIAL_REDUCER_STATE);
 
-  const { checkGameState, startGame } = useGameState(state, dispatch);
+  const { checkGameState, startGame, restartGame } = useGameState(state, dispatch);
   const { appendTile, moveTiles } = useTileManagement(state, dispatch);
 
   useEffect(() => {
@@ -33,7 +26,7 @@ const useGame = () => {
     }
   }, [state.isStateUpdated]);
 
-  return { ...state, startGame, moveTiles, appendTile };
+  return { ...state, startGame, moveTiles, appendTile, restartGame };
 };
 
 export { useGame };

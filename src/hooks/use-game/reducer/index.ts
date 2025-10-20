@@ -4,6 +4,7 @@ import { getRandomTileValue, initializeGrid } from "../../../shared/utils";
 import { EDirection } from "../../../shared/enum";
 import type { ITile, ITileMap } from "../../../models/tile";
 import { TILES_PER_ROW_COUNT } from "../../../shared/const";
+import { INITIAL_REDUCER_STATE } from "../const";
 
 const gameReducer = (state: IGameReducerState, action: IGameReducerAction): IGameReducerState => {
   switch (action.type) {
@@ -48,6 +49,9 @@ const gameReducer = (state: IGameReducerState, action: IGameReducerAction): IGam
       const { gameState } = action;
 
       return { ...state, gameState };
+    }
+    case "reset": {
+      return INITIAL_REDUCER_STATE;
     }
     default: {
       return state;

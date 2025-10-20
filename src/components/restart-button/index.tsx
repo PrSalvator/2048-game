@@ -1,7 +1,9 @@
+import { useGameContext } from "../../context/game/hook";
 import { Button } from "../../shared/components/button";
 
 const RestartButton = () => {
-  return <Button>Restart</Button>;
+  const { restartGame } = useGameContext();
+  return <Button onClick={restartGame}>Restart</Button>;
 };
 
 export { RestartButton };

@@ -13,6 +13,8 @@ interface IGameContextValue {
   score: number;
   bestScore: number;
   gameState: EGameState;
+
+  restartGame: () => void;
 }
 
 type IGameProviderProps = PropsWithChildren;

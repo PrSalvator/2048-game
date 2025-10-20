@@ -84,10 +84,31 @@ const getEmptyTilesCoordinates = (grid: IGridTilesIds): ICoordinates[] => {
   return emptyTilesCoordinates;
 };
 
+const getUniqueRandomCoordinates = (count = 1): ICoordinates[] => {
+  const allPossibleCoordinates: ICoordinates[] = [];
+
+  for (let row = 0; row < TILES_PER_ROW_COUNT; row++) {
+    for (let column = 0; column < TILES_PER_ROW_COUNT; column++) {
+      allPossibleCoordinates.push({ row, column });
+    }
+  }
+
+  for (let i = 0; i < count; i++) {
+    const randomIndex = i + Math.floor(Math.random() * (allPossibleCoordinates.length - i));
+    [allPossibleCoordinates[i], allPossibleCoordinates[randomIndex]] = [
+      allPossibleCoordinates[randomIndex],
+      allPossibleCoordinates[i],
+    ];
+  }
+
+  return allPossibleCoordinates.slice(0, count);
+};
+
 export {
   getPixelPositionFromCoordinates,
   initializeGrid,
   getRandomTileValue,
   checkMovePossibility,
   getEmptyTilesCoordinates,
+  getUniqueRandomCoordinates,
 };

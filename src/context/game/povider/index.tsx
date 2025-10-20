@@ -12,7 +12,7 @@ const bestScore = localStorageService.get<number>(ELocalStorageKey.BEST_SCORE);
 
 const GameProvider = ({ children }: IGameProviderProps) => {
   const initialized = useRef(false);
-  const { grid, tiles, score, moveTiles, gameState, startGame } = useGame();
+  const { grid, tiles, score, moveTiles, gameState, startGame, restartGame } = useGame();
 
   const contextValue = useMemo(() => {
     return {
@@ -21,8 +21,10 @@ const GameProvider = ({ children }: IGameProviderProps) => {
       score,
       bestScore: isNil(bestScore) ? score : bestScore,
       gameState,
+
+      restartGame,
     };
-  }, [grid, tiles, score, gameState]);
+  }, [grid, tiles, score, gameState, restartGame]);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent): void => {
