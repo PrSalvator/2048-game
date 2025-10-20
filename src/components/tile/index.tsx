@@ -30,7 +30,7 @@ const Tile = ({ value, coordinates }: ITile) => {
   }, [value]);
 
   return (
-    <div className={clsx("tile", `tile${value}`, "font-jaro")} style={style}>
+    <div className={clsx("tile", `tile${value}`)} style={style}>
       {value}
     </div>
   );

@@ -1,13 +1,14 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./styles/index.css";
-import { Grid } from "./components/grid";
 import { GameProvider } from "./context/game";
+
+import { Layout } from "./components/layout";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <GameProvider>
-      <Grid />
+      <Layout />
     </GameProvider>
   </StrictMode>
 );

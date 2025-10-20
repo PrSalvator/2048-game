@@ -8,20 +8,20 @@ class LocalStorageService implements ILocalStorageService {
     this.storage = window.localStorage;
   }
 
-  get(key: ELocalStorageKey, defaultValue: unknown) {
+  get<T>(key: ELocalStorageKey, defaultValue?: T): T | null {
     try {
       const item = this.storage.getItem(key);
       if (item === null) {
-        return defaultValue;
+        return defaultValue ? defaultValue : null;
       }
       return JSON.parse(item);
     } catch (error) {
       console.error("Ошибка при получении из localStorage:", error);
-      return defaultValue;
+      return defaultValue ?? null;
     }
   }
 
-  set(key: ELocalStorageKey, value: unknown) {
+  set(key: ELocalStorageKey, value: unknown): void {
     try {
       const serializedValue = JSON.stringify(value);
       this.storage.setItem(key, serializedValue);

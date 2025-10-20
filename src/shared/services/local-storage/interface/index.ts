@@ -7,7 +7,7 @@ interface ILocalStorageService {
    * @param {*} defaultValue - Значение по умолчанию, если ключ не найден
    * @returns {*} - Полученное значение или defaultValue
    */
-  get: (key: ELocalStorageKey, defaultValue: unknown) => unknown;
+  get: <T>(key: ELocalStorageKey, defaultValue?: T) => T | null;
 
   /**
    * Сохранить данные в localStorage

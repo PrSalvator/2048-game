@@ -42,11 +42,12 @@ const gameReducer = (state: IGameReducerState, action: IGameReducerAction): IGam
         if (gridTilesIds.some((tileId) => tile.id === tileId)) newTiles[tile.id] = tile;
       });
 
-      // state.grid.flat().forEach((tileId) => {
-      //   if (tileId) newTiles[tileId] = state.tiles[tileId];
-      // });
-
       return { ...state, tiles: newTiles, isStateUpdated: false };
+    }
+    case "set_game_state": {
+      const { gameState } = action;
+
+      return { ...state, gameState };
     }
     default: {
       return state;
@@ -62,10 +63,11 @@ const gameReducer = (state: IGameReducerState, action: IGameReducerAction): IGam
  */
 
 const moveTiles = (direction: EDirection, prevState: IGameReducerState): IGameReducerState => {
-  const { grid, tiles } = prevState;
+  const { grid, tiles, score } = prevState;
 
   const newGrid = initializeGrid();
   const newTiles: ITileMap = cloneDeep(tiles);
+  let newScore = score;
   let isStateUpdated = false;
 
   switch (direction) {
@@ -81,6 +83,8 @@ const moveTiles = (direction: EDirection, prevState: IGameReducerState): IGameRe
             const currentTile = tiles[tileId];
 
             if (prevTile?.value === currentTile.value) {
+              newScore += prevTile.value * 2;
+
               newTiles[prevTile.id].value = prevTile.value * 2;
 
               newTiles[currentTile.id] = { ...currentTile, coordinates: prevTile.coordinates };
@@ -103,7 +107,7 @@ const moveTiles = (direction: EDirection, prevState: IGameReducerState): IGameRe
         }
       }
 
-      return { ...prevState, grid: newGrid, tiles: newTiles, isStateUpdated };
+      return { ...prevState, grid: newGrid, tiles: newTiles, isStateUpdated, score: newScore };
     }
     case EDirection.TOP: {
       for (let column = 0; column !== TILES_PER_ROW_COUNT; column++) {
@@ -117,6 +121,8 @@ const moveTiles = (direction: EDirection, prevState: IGameReducerState): IGameRe
             const currentTile = tiles[tileId];
 
             if (prevTile?.value === currentTile.value) {
+              newScore += prevTile.value * 2;
+
               newTiles[prevTile.id].value = prevTile.value * 2;
 
               newTiles[currentTile.id] = { ...currentTile, coordinates: prevTile.coordinates };
@@ -139,7 +145,7 @@ const moveTiles = (direction: EDirection, prevState: IGameReducerState): IGameRe
         }
       }
 
-      return { ...prevState, grid: newGrid, tiles: newTiles, isStateUpdated };
+      return { ...prevState, grid: newGrid, tiles: newTiles, isStateUpdated, score: newScore };
     }
     case EDirection.RIGHT: {
       for (let row = TILES_PER_ROW_COUNT - 1; row !== -1; row--) {
@@ -153,6 +159,8 @@ const moveTiles = (direction: EDirection, prevState: IGameReducerState): IGameRe
             const currentTile = tiles[tileId];
 
             if (prevTile?.value === currentTile.value) {
+              newScore += prevTile.value * 2;
+
               newTiles[prevTile.id].value = prevTile.value * 2;
 
               newTiles[currentTile.id] = { ...currentTile, coordinates: prevTile.coordinates };
@@ -175,7 +183,7 @@ const moveTiles = (direction: EDirection, prevState: IGameReducerState): IGameRe
         }
       }
 
-      return { ...prevState, grid: newGrid, tiles: newTiles, isStateUpdated };
+      return { ...prevState, grid: newGrid, tiles: newTiles, isStateUpdated, score: newScore };
     }
     case EDirection.LEFT: {
       for (let row = 0; row !== TILES_PER_ROW_COUNT; row++) {
@@ -189,6 +197,8 @@ const moveTiles = (direction: EDirection, prevState: IGameReducerState): IGameRe
             const currentTile = tiles[tileId];
 
             if (prevTile?.value === currentTile.value) {
+              newScore += prevTile.value * 2;
+
               newTiles[prevTile.id].value = prevTile.value * 2;
 
               newTiles[currentTile.id] = { ...currentTile, coordinates: prevTile.coordinates };
@@ -211,7 +221,7 @@ const moveTiles = (direction: EDirection, prevState: IGameReducerState): IGameRe
         }
       }
 
-      return { ...prevState, grid: newGrid, tiles: newTiles, isStateUpdated };
+      return { ...prevState, grid: newGrid, tiles: newTiles, isStateUpdated, score: newScore };
     }
     default: {
       return prevState;

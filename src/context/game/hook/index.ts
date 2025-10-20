@@ -1,8 +1,15 @@
 import { createContext, useContext } from "react";
 import type { IGameContextValue } from "../interface";
 import { initializeGrid } from "../../../shared/utils";
+import { EGameState } from "../../../shared/enum";
 
-const GAME_CONTEXT_DEFAULT_VALUE: IGameContextValue = { grid: initializeGrid(), tiles: [] };
+const GAME_CONTEXT_DEFAULT_VALUE: IGameContextValue = {
+  grid: initializeGrid(),
+  tiles: [],
+  score: 0,
+  bestScore: 0,
+  gameState: EGameState.PLAYING,
+};
 
 const GameContext = createContext(GAME_CONTEXT_DEFAULT_VALUE);
 

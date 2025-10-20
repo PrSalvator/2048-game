@@ -13,7 +13,13 @@ enum EKeyboardKey {
 }
 
 enum ELocalStorageKey {
-  KEY = "key",
+  BEST_SCORE = "BestScore",
 }
 
-export { EDirection, EKeyboardKey, ELocalStorageKey };
+enum EGameState {
+  WON = "won",
+  LOST = "lost",
+  PLAYING = "playing",
+}
+
+export { EDirection, EKeyboardKey, ELocalStorageKey, EGameState };

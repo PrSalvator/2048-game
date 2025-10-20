@@ -2,7 +2,6 @@ import type { CSSProperties } from "react";
 import { useGameContext } from "../../context/game/hook";
 import { TILE_GAP, TILES_PER_ROW_COUNT, TILE_SIZE } from "../../shared/const";
 import { Tile } from "../tile";
-
 const GRID_SIZE = TILES_PER_ROW_COUNT * TILE_SIZE + TILE_GAP * (TILES_PER_ROW_COUNT - 1);
 
 const GRID_STYLE: CSSProperties = {
