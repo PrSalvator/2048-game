@@ -1,7 +1,12 @@
 .grid-wrapper {
   width: fit-content;
   height: fit-content;
-  padding: 16px;
+  height: 100vh;
+  background-color: var(--gray);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .grid {

@@ -17,17 +17,15 @@ const Grid = () => {
   const { grid, tiles } = useGameContext();
 
   return (
-    <div>
-      <div className="grid-wrapper">
-        <div className="grid" style={GRID_STYLE}>
-          {tiles.map((tile) => (
-            <Tile {...tile} key={`tile-${tile.id}`} />
-          ))}
+    <div className="grid-wrapper">
+      <div className="grid" style={GRID_STYLE}>
+        {tiles.map((tile) => (
+          <Tile {...tile} key={`tile-${tile.id}`} />
+        ))}
 
-          {grid.flat().map((_, index) => (
-            <div className="tile empty" key={`bg-tile-${index}`} />
-          ))}
-        </div>
+        {grid.flat().map((_, index) => (
+          <div className="tile empty" key={`bg-tile-${index}`} />
+        ))}
       </div>
     </div>
   );

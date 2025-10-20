@@ -12,4 +12,8 @@ enum EKeyboardKey {
   ARROW_RIGHT = "ArrowRight",
 }
 
-export { EDirection, EKeyboardKey };
+enum ELocalStorageKey {
+  KEY = "key",
+}
+
+export { EDirection, EKeyboardKey, ELocalStorageKey };
