@@ -2,12 +2,19 @@ import type { ELocalStorageKey } from "../../../enum";
 
 interface ILocalStorageService {
   /**
-   * Получить данные из localStorage
+   * Получить данные из localStorage без значения по умолчанию
    * @param {string} key - Ключ для получения
-   * @param {*} defaultValue - Значение по умолчанию, если ключ не найден
-   * @returns {*} - Полученное значение или defaultValue
+   * @returns {T | null} - Полученное значение или null если не найдено
    */
-  get: <T>(key: ELocalStorageKey, defaultValue?: T) => T | null;
+  get<T>(key: ELocalStorageKey): T | null;
+
+  /**
+   * Получить данные из localStorage со значением по умолчанию
+   * @param {string} key - Ключ для получения
+   * @param {T} defaultValue - Значение по умолчанию, если ключ не найден
+   * @returns {T} - Полученное значение или defaultValue
+   */
+  get<T>(key: ELocalStorageKey, defaultValue: T): T;
 
   /**
    * Сохранить данные в localStorage

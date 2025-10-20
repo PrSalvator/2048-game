@@ -1,3 +1,4 @@
+import { isNil } from "lodash-es";
 import type { ELocalStorageKey } from "../../enum";
 import type { ILocalStorageService } from "./interface";
 
@@ -8,20 +9,22 @@ class LocalStorageService implements ILocalStorageService {
     this.storage = window.localStorage;
   }
 
+  get<T>(key: ELocalStorageKey): T | null;
+  get<T>(key: ELocalStorageKey, defaultValue: T): T;
   get<T>(key: ELocalStorageKey, defaultValue?: T): T | null {
     try {
       const item = this.storage.getItem(key);
-      if (item === null) {
-        return defaultValue ? defaultValue : null;
+      if (isNil(item)) {
+        return (defaultValue as T) ?? null;
       }
-      return JSON.parse(item);
+      return JSON.parse(item) as T;
     } catch (error) {
       console.error("Ошибка при получении из localStorage:", error);
-      return defaultValue ?? null;
+      return (defaultValue as T) ?? null;
     }
   }
 
-  set(key: ELocalStorageKey, value: unknown): void {
+  set(key: ELocalStorageKey, value: unknown) {
     try {
       const serializedValue = JSON.stringify(value);
       this.storage.setItem(key, serializedValue);
