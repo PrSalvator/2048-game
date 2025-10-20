@@ -1,4 +1,6 @@
+import { isNil } from "lodash-es";
 import type { IGridTilesIds } from "../../models/grid";
+import type { ITileMap } from "../../models/tile";
 import { TILE_GAP, TILES_PER_ROW_COUNT, TILE_SIZE } from "../const";
 import type { ICoordinates } from "../interface";
 
@@ -32,4 +34,60 @@ const getRandomTileValue = () => {
   return Math.random() < 0.9 ? 2 : 4;
 };
 
-export { getPixelPositionFromCoordinates, initializeGrid, getRandomTileValue };
+const checkMovePossibility = (tilesMap: ITileMap): boolean => {
+  const tilesArray = Object.values(tilesMap);
+  let isPossible = false;
+
+  // Быстрая проверка на пустые клетки
+  if (tilesArray.length < TILES_PER_ROW_COUNT * TILES_PER_ROW_COUNT) return true;
+
+  for (const tile of tilesArray) {
+    const {
+      value,
+      coordinates: { row, column },
+    } = tile;
+
+    if (column < TILES_PER_ROW_COUNT - 1) {
+      // Проверка правого соседа
+      const rightTile = tilesMap[`${row}.${column + 1}`];
+
+      if (rightTile.value === value) {
+        isPossible = true;
+        break;
+      }
+    }
+
+    if (row < TILES_PER_ROW_COUNT - 1) {
+      // Проверка нижнего соседа
+      const bottomTile = tilesMap[`${row + 1}.${column}`];
+      if (bottomTile.value === value) {
+        isPossible = true;
+        break;
+      }
+    }
+  }
+
+  return isPossible;
+};
+
+const getEmptyTilesCoordinates = (grid: IGridTilesIds): ICoordinates[] => {
+  const emptyTilesCoordinates: ICoordinates[] = [];
+
+  for (let row = 0; row < TILES_PER_ROW_COUNT; row++) {
+    for (let column = 0; column < TILES_PER_ROW_COUNT; column++) {
+      const tile = grid[row][column];
+
+      if (isNil(tile)) emptyTilesCoordinates.push({ row, column });
+    }
+  }
+
+  return emptyTilesCoordinates;
+};
+
+export {
+  getPixelPositionFromCoordinates,
+  initializeGrid,
+  getRandomTileValue,
+  checkMovePossibility,
+  getEmptyTilesCoordinates,
+};
