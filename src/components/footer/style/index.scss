@@ -9,15 +9,18 @@
   justify-content: center;
 
   @media (min-width: $laptop) {
-    gap: $gap-l;
     font-size: $text-m;
     flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
   }
 
   @media (min-width: $desktop) {
     gap: $gap-xl;
     font-size: $text-l;
     flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
   }
 
   &__icons {

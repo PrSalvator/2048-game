@@ -1,4 +1,4 @@
-const TILES_PER_ROW_COUNT = 4;
+const TILES_PER_ROW_COUNT = 2;
 
 const TILE_GAP = 20;
 

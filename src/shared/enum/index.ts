@@ -29,8 +29,8 @@ enum EBreakPoint {
 }
 
 enum ETilseSize {
-  XL = 132,
-  L = 100,
+  XL = 95,
+  L = 85,
   M = 54,
 }
 

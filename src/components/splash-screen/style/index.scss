@@ -1,3 +1,5 @@
+@use "../../../styles/variables" as *;
+
 .splash-screen__wrapper {
   position: fixed;
   width: 100%;
@@ -16,11 +18,27 @@
   text-transform: uppercase;
 
   h1 {
-    font-size: 96px;
+    font-size: $text-xl;
+
+    @media (min-width: $laptop) {
+      font-size: $text-2xl;
+    }
+
+    @media (min-width: $desktop) {
+      font-size: $text-3xl;
+    }
   }
 
   h2 {
-    font-size: 64px;
+    font-size: $text-l;
+
+    @media (min-width: $laptop) {
+      font-size: $text-xl;
+    }
+
+    @media (min-width: $desktop) {
+      font-size: $text-2xl;
+    }
   }
 }
 
@@ -32,13 +50,29 @@
 .won-splash-screen {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: $gap-l;
   align-items: center;
+
+  @media (min-width: $laptop) {
+    gap: $gap-xl;
+  }
+
+  @media (min-width: $desktop) {
+    gap: $gap-2xl;
+  }
 }
 
 .lost-splash-screen {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: $gap-l;
   align-items: center;
+
+  @media (min-width: $laptop) {
+    gap: $gap-xl;
+  }
+
+  @media (min-width: $desktop) {
+    gap: $gap-2xl;
+  }
 }
