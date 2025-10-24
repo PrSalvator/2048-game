@@ -1,0 +1,71 @@
+@use "sass:map";
+
+$tiles-per-row: 4;
+
+// screen sizes
+$desktop: 1440px;
+$laptop: 860px;
+$phone: 320px;
+
+$colors: (
+  basic: (
+    gray: #f2f2f2,
+    yellow: #f2e530,
+    purple: #5056bf,
+    light-purple: #bcbbf2,
+    blue: #030a8c,
+  ),
+  tiles: (
+    2: #cf043c,
+    4: #df042b,
+    8: #e9510e,
+    16: #f49600,
+    32: #eb5777,
+    64: #e1328c,
+    128: #bb0a7e,
+    256: #951b80,
+    512: #fcc513,
+    1024: #ccce00,
+    2048: #52bfd3,
+  ),
+);
+
+@function tile-color($key) {
+  @return map.get($colors, "tiles", $key);
+}
+
+@function basic-color($key) {
+  @return map.get($colors, basic, $key);
+}
+
+// text sizes
+$text-3xl: 96px;
+$text-2xl: 64px;
+$text-xl: 48px;
+$text-l: 36px;
+$text-m: 24px;
+$text-s: 20px;
+$text-xs: 16px;
+
+// border sizes
+$border-l: 8px;
+$border-m: 4px;
+$border-s: 2px;
+
+// rounded sizes
+$rounded-l: 8px;
+
+// gap sizes
+$gap-2xl: 32px;
+$gap-xl: 16px;
+$gap-l: 12px;
+$gap-m: 8px;
+$gap-s: 4px;
+
+// padding
+$p-l: 8px;
+
+// height
+$h-15: 60px;
+$h-10: 40px;
+$h-8: 32px;

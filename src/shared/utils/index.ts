@@ -1,20 +1,26 @@
 import { isNil } from "lodash-es";
 import type { IGridTilesIds } from "../../models/grid";
 import type { ITileMap } from "../../models/tile";
-import { TILE_GAP, TILES_PER_ROW_COUNT, TILE_SIZE } from "../const";
+import { TILES_PER_ROW_COUNT } from "../const";
 import type { ICoordinates } from "../interface";
+import { EBreakPoint } from "../enum";
 
 /**
  * Преобразует координаты ячейки в пиксельные координаты для отрисовки
  *
  * @param coordinates - Объект с координатами ячейки на игровом поле
- *
+ * @param tileSize - Размер плитки
+ * @param gap - Расстояние между плитками
  * @returns Объект с пиксельными координатами {left: number, top: number}
  */
-const getPixelPositionFromCoordinates = ({ row, column }: ICoordinates) => {
-  const left = column * TILE_SIZE + column * TILE_GAP; // С учетом расстояния между плитками
+const getPixelPositionFromCoordinates = (
+  { row, column }: ICoordinates,
+  tileSize: number,
+  gap: number
+) => {
+  const left = column * tileSize + column * gap; // С учетом расстояния между плитками
 
-  const top = row * TILE_SIZE + row * TILE_GAP; // С учетом расстояния между плитками
+  const top = row * tileSize + row * gap; // С учетом расстояния между плитками
 
   return { left, top };
 };
@@ -104,6 +110,14 @@ const getUniqueRandomCoordinates = (count = 1): ICoordinates[] => {
   return allPossibleCoordinates.slice(0, count);
 };
 
+const getBreakpointFromWindowWidth = () => {
+  const width = window.innerWidth;
+
+  if (width >= EBreakPoint.DESKTOP) return EBreakPoint.DESKTOP;
+  if (width >= EBreakPoint.LAPTOP) return EBreakPoint.LAPTOP;
+  return EBreakPoint.PHONE;
+};
+
 export {
   getPixelPositionFromCoordinates,
   initializeGrid,
@@ -111,4 +125,5 @@ export {
   checkMovePossibility,
   getEmptyTilesCoordinates,
   getUniqueRandomCoordinates,
+  getBreakpointFromWindowWidth,
 };

@@ -1,0 +1,73 @@
+@use "sass:math";
+@use "../../../styles/variables" as *;
+
+// tile sizes
+$tile-xl: 132px;
+$tile-l: 100px;
+$tile-m: 54px;
+
+.tile {
+  position: absolute;
+  background-color: basic-color(light-purple);
+  border-radius: $rounded-l;
+  border-color: basic-color(purple);
+  border-width: 0px;
+  border-style: solid;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: $text-s;
+  color: white;
+
+  transition-property: left, top, transform;
+
+  &.empty {
+    position: static;
+    border: none;
+    background-color: basic-color(light-purple);
+  }
+
+  @media (min-width: $laptop) {
+    font-size: $text-l;
+  }
+
+  @media (min-width: $desktop) {
+    font-size: $text-xl;
+  }
+
+  // Модификаторы значений
+  &--2 {
+    background-color: tile-color(2);
+  }
+  &--4 {
+    background-color: tile-color(4);
+  }
+  &--8 {
+    background-color: tile-color(8);
+  }
+  &--16 {
+    background-color: tile-color(16);
+  }
+  &--32 {
+    background-color: tile-color(32);
+  }
+  &--64 {
+    background-color: tile-color(64);
+  }
+  &--128 {
+    background-color: tile-color(128);
+  }
+  &--256 {
+    background-color: tile-color(256);
+  }
+  &--512 {
+    background-color: tile-color(512);
+  }
+  &--1024 {
+    background-color: tile-color(1024);
+  }
+  &--2048 {
+    background-color: tile-color(2048);
+  }
+}

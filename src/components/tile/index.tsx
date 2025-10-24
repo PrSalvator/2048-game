@@ -1,22 +1,28 @@
-import { useEffect, useRef, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import type { ITile } from "../../models/tile";
 import { getPixelPositionFromCoordinates } from "../../shared/utils";
-import { TILE_ANIMATION_DURATION, TILE_SIZE } from "../../shared/const";
+import { TILE_ANIMATION_DURATION } from "../../shared/const";
 import clsx from "clsx";
+import { useTileSize } from "../../hooks/use-tile-size";
 
 const Tile = ({ value, coordinates }: ITile) => {
   const prevValueRef = useRef<number>(undefined);
 
+  const { tileSize, gap } = useTileSize();
+
   const [scale, setScale] = useState<number>(1);
 
-  const style: CSSProperties = {
-    ...getPixelPositionFromCoordinates(coordinates),
-    width: TILE_SIZE,
-    height: TILE_SIZE,
-    transform: `scale(${scale})`,
-    zIndex: value,
-    transitionDuration: `${TILE_ANIMATION_DURATION}ms`,
-  };
+  const style: CSSProperties = useMemo(
+    () => ({
+      ...getPixelPositionFromCoordinates(coordinates, tileSize, gap),
+      transform: `scale(${scale})`,
+      zIndex: value,
+      transitionDuration: `${TILE_ANIMATION_DURATION}ms`,
+      width: tileSize,
+      height: tileSize,
+    }),
+    [coordinates, scale, value, tileSize, gap]
+  );
 
   useEffect(() => {
     if (prevValueRef.current !== value) {
@@ -30,7 +36,7 @@ const Tile = ({ value, coordinates }: ITile) => {
   }, [value]);
 
   return (
-    <div className={clsx("tile", `tile${value}`)} style={style}>
+    <div className={clsx("tile", `tile--${value}`)} style={style}>
       {value}
     </div>
   );

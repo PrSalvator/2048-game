@@ -1,23 +1,29 @@
-import type { CSSProperties } from "react";
+import { useMemo, type CSSProperties } from "react";
 import { useGameContext } from "../../context/game/hook";
-import { TILE_GAP, TILES_PER_ROW_COUNT, TILE_SIZE } from "../../shared/const";
+import { TILES_PER_ROW_COUNT } from "../../shared/const";
 import { Tile } from "../tile";
-const GRID_SIZE = TILES_PER_ROW_COUNT * TILE_SIZE + TILE_GAP * (TILES_PER_ROW_COUNT - 1);
-
-const GRID_STYLE: CSSProperties = {
-  width: GRID_SIZE,
-  height: GRID_SIZE,
-  gridTemplateRows: `repeat(${TILES_PER_ROW_COUNT}, 1fr)`,
-  gridTemplateColumns: `repeat(${TILES_PER_ROW_COUNT}, 1fr)`,
-  gap: TILE_GAP,
-};
+import { useTileSize } from "../../hooks/use-tile-size";
 
 const Grid = () => {
   const { grid, tiles } = useGameContext();
 
+  const { tileSize, gap } = useTileSize();
+
+  const style: CSSProperties = useMemo(() => {
+    const gridSize = TILES_PER_ROW_COUNT * tileSize + gap * (TILES_PER_ROW_COUNT - 1);
+
+    return {
+      width: gridSize,
+      height: gridSize,
+      gridTemplateRows: `repeat(${TILES_PER_ROW_COUNT}, 1fr)`,
+      gridTemplateColumns: `repeat(${TILES_PER_ROW_COUNT}, 1fr)`,
+      gap: gap,
+    };
+  }, [tileSize, gap]);
+
   return (
     <div className="grid-wrapper">
-      <div className="grid" style={GRID_STYLE}>
+      <div className="grid" style={style}>
         {tiles.map((tile) => (
           <Tile {...tile} key={`tile-${tile.id}`} />
         ))}

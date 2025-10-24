@@ -1,7 +1,8 @@
+@use "../../../styles/variables" as *;
+
 .grid-wrapper {
   width: fit-content;
   height: fit-content;
-  background-color: var(--gray);
   display: flex;
   flex-direction: column;
   justify-content: center;

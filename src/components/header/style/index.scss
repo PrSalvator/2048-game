@@ -1,0 +1,55 @@
+@use "../../../styles/variables" as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @media (min-width: $laptop) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__win-value {
+    font-size: $text-l;
+
+    @media (min-width: $laptop) {
+      font-size: $text-xl;
+    }
+
+    @media (min-width: $desktop) {
+      font-size: $text-2xl;
+    }
+
+    span:nth-child(1) {
+      color: tile-color(2);
+    }
+    span:nth-child(2) {
+      color: tile-color(8);
+    }
+    span:nth-child(3) {
+      color: tile-color(512);
+    }
+    span:nth-child(4) {
+      color: tile-color(2048);
+    }
+  }
+
+  &__text {
+    font-size: $text-s;
+    text-align: center;
+    max-width: 205px;
+
+    @media (min-width: $laptop) {
+      font-size: $text-m;
+      text-align: end;
+      max-width: 250px;
+    }
+
+    @media (min-width: $desktop) {
+      font-size: $text-l;
+      text-align: end;
+      max-width: 370px;
+    }
+  }
+}

@@ -22,4 +22,30 @@ enum EGameState {
   PLAYING = "playing",
 }
 
-export { EDirection, EKeyboardKey, ELocalStorageKey, EGameState };
+enum EBreakPoint {
+  DESKTOP = 1440,
+  LAPTOP = 860,
+  PHONE = 320,
+}
+
+enum ETilseSize {
+  XL = 132,
+  L = 100,
+  M = 54,
+}
+
+enum EGapSize {
+  XL = 16,
+  L = 12,
+  M = 8,
+}
+
+export {
+  EDirection,
+  EKeyboardKey,
+  ELocalStorageKey,
+  EGameState,
+  EBreakPoint,
+  ETilseSize,
+  EGapSize,
+};
