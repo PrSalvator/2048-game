@@ -1,5 +1,5 @@
 import { isEmpty, throttle } from "lodash-es";
-import type { ActionDispatch } from "react";
+import { useCallback, type ActionDispatch } from "react";
 import { TILE_ANIMATION_DURATION } from "../../shared/const";
 import type { EDirection } from "../../shared/enum";
 
@@ -19,12 +19,15 @@ const useTileManagement = (
     }
   };
 
-  const moveTiles = throttle(
-    (direction: EDirection): void => {
-      dispatch({ type: "move_tiles", direction });
-    },
-    TILE_ANIMATION_DURATION,
-    { trailing: false }
+  const moveTiles = useCallback(
+    throttle(
+      (direction: EDirection): void => {
+        dispatch({ type: "move_tiles", direction });
+      },
+      TILE_ANIMATION_DURATION,
+      { trailing: false }
+    ),
+    [dispatch]
   );
 
   return { moveTiles, appendTile };

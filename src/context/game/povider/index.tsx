@@ -1,14 +1,16 @@
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useGame } from "../../../hooks/use-game";
 import { GameContext } from "../hook";
 import type { IGameProviderProps } from "../interface";
-import { EDirection, EGameState, EKeyboardKey } from "../../../shared/enum";
 import { useGameScore } from "../../../hooks/use-game-score";
+import { useGameControls } from "../../../hooks/use-game-controls";
 
 const GameProvider = ({ children }: IGameProviderProps) => {
   const initialized = useRef(false);
   const { grid, tiles, score, moveTiles, gameState, startGame, restartGame } = useGame();
   const { bestScore } = useGameScore(score);
+
+  const { handleKeyDown, handleTouchStart } = useGameControls(gameState, moveTiles);
 
   const contextValue = useMemo(() => {
     return {
@@ -17,36 +19,9 @@ const GameProvider = ({ children }: IGameProviderProps) => {
       score,
       bestScore,
       gameState,
-
       restartGame,
     };
   }, [grid, tiles, score, gameState, bestScore, restartGame]);
-
-  const handleKeyDown = useCallback(
-    (e: KeyboardEvent): void => {
-      if (gameState !== EGameState.PLAYING) return;
-
-      switch (e.key) {
-        case EKeyboardKey.ARROW_DOWN: {
-          moveTiles(EDirection.DOWN);
-          break;
-        }
-        case EKeyboardKey.ARROW_TOP: {
-          moveTiles(EDirection.TOP);
-          break;
-        }
-        case EKeyboardKey.ARROW_LEFT: {
-          moveTiles(EDirection.LEFT);
-          break;
-        }
-        case EKeyboardKey.ARROW_RIGHT: {
-          moveTiles(EDirection.RIGHT);
-          break;
-        }
-      }
-    },
-    [gameState]
-  );
 
   useEffect(() => {
     if (initialized.current === false) {
@@ -57,11 +32,13 @@ const GameProvider = ({ children }: IGameProviderProps) => {
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("touchstart", handleTouchStart);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("touchstart", handleTouchStart);
     };
-  }, [handleKeyDown]);
+  }, [handleKeyDown, handleTouchStart]);
 
   return <GameContext.Provider value={contextValue}>{children}</GameContext.Provider>;
 };
