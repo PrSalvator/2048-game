@@ -3,10 +3,12 @@
 .layout-wrapper {
   background-color: basic-color(gray);
   width: 100%;
-  height: 100vh;
+  height: 100dvh;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  touch-action: none;
 }
 
 .layout {

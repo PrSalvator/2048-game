@@ -5,6 +5,8 @@ import { EDirection } from "../../shared/enum";
 export const useSwipe = (onSwipe: (direction: EDirection) => void) => {
   const handleTouchStart = useCallback(
     (e: TouchEvent) => {
+      e.preventDefault();
+
       const touch = e.touches[0];
       const startX = touch.clientX;
       const startY = touch.clientY;
