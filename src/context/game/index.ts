@@ -1,1 +1,1 @@
-export { GameProvider } from "./povider";
+export { GameProvider } from './povider';

@@ -1,4 +1,4 @@
-@use "sass:map";
+@use 'sass:map';
 
 $tiles-per-row: 4;
 
@@ -8,34 +8,34 @@ $laptop: 860px;
 $phone: 320px;
 
 $colors: (
-  basic: (
-    gray: #f2f2f2,
-    yellow: #f2e530,
-    purple: #5056bf,
-    light-purple: #bcbbf2,
-    blue: #030a8c,
-  ),
-  tiles: (
-    2: #cf043c,
-    4: #df042b,
-    8: #e9510e,
-    16: #f49600,
-    32: #eb5777,
-    64: #e1328c,
-    128: #bb0a7e,
-    256: #951b80,
-    512: #fcc513,
-    1024: #ccce00,
-    2048: #52bfd3,
-  ),
+    basic: (
+        gray: #f2f2f2,
+        yellow: #f2e530,
+        purple: #5056bf,
+        light-purple: #bcbbf2,
+        blue: #030a8c,
+    ),
+    tiles: (
+        2: #cf043c,
+        4: #df042b,
+        8: #e9510e,
+        16: #f49600,
+        32: #eb5777,
+        64: #e1328c,
+        128: #bb0a7e,
+        256: #951b80,
+        512: #fcc513,
+        1024: #ccce00,
+        2048: #52bfd3,
+    ),
 );
 
 @function tile-color($key) {
-  @return map.get($colors, "tiles", $key);
+    @return map.get($colors, 'tiles', $key);
 }
 
 @function basic-color($key) {
-  @return map.get($colors, basic, $key);
+    @return map.get($colors, basic, $key);
 }
 
 // text sizes

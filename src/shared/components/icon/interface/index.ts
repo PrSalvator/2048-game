@@ -1,7 +1,7 @@
-type IIconType = "git" | "figma";
+type IIconType = 'git' | 'figma';
 
 interface IIconProps {
-  type: IIconType;
+    type: IIconType;
 }
 
 export type { IIconProps, IIconType };

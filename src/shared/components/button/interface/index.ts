@@ -1,9 +1,9 @@
-import type { PropsWithChildren } from "react";
+import type { PropsWithChildren } from 'react';
 
 interface IButtonProps extends PropsWithChildren {
-  isDisabled?: boolean;
+    isDisabled?: boolean;
 
-  onClick?: () => void;
+    onClick?: () => void;
 }
 
 export type { IButtonProps };

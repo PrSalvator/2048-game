@@ -1,51 +1,43 @@
 enum EDirection {
-  LEFT = "left",
-  RIGHT = "right",
-  TOP = "top",
-  DOWN = "down",
+    LEFT = 'left',
+    RIGHT = 'right',
+    TOP = 'top',
+    DOWN = 'down',
 }
 
 enum EKeyboardKey {
-  ARROW_DOWN = "ArrowDown",
-  ARROW_TOP = "ArrowUp",
-  ARROW_LEFT = "ArrowLeft",
-  ARROW_RIGHT = "ArrowRight",
+    ARROW_DOWN = 'ArrowDown',
+    ARROW_TOP = 'ArrowUp',
+    ARROW_LEFT = 'ArrowLeft',
+    ARROW_RIGHT = 'ArrowRight',
 }
 
 enum ELocalStorageKey {
-  BEST_SCORE = "BestScore",
+    BEST_SCORE = 'BestScore',
 }
 
 enum EGameState {
-  WON = "won",
-  LOST = "lost",
-  PLAYING = "playing",
+    WON = 'won',
+    LOST = 'lost',
+    PLAYING = 'playing',
 }
 
 enum EBreakPoint {
-  DESKTOP = 1440,
-  LAPTOP = 860,
-  PHONE = 320,
+    DESKTOP = 1440,
+    LAPTOP = 860,
+    PHONE = 320,
 }
 
 enum ETilseSize {
-  XL = 95,
-  L = 85,
-  M = 54,
+    XL = 95,
+    L = 85,
+    M = 54,
 }
 
 enum EGapSize {
-  XL = 16,
-  L = 12,
-  M = 8,
+    XL = 16,
+    L = 12,
+    M = 8,
 }
 
-export {
-  EDirection,
-  EKeyboardKey,
-  ELocalStorageKey,
-  EGameState,
-  EBreakPoint,
-  ETilseSize,
-  EGapSize,
-};
+export { EDirection, EKeyboardKey, ELocalStorageKey, EGameState, EBreakPoint, ETilseSize, EGapSize };

@@ -1,37 +1,37 @@
-@use "../../../../styles/variables" as *;
+@use '../../../../styles/variables' as *;
 
 .button {
-  height: $h-8;
-  border-radius: $rounded-l;
-  border-width: $border-s;
-  border-style: solid;
-  border-color: basic-color(purple);
-  font-size: $text-xs;
-  padding: 0 $p-l;
-  background-color: basic-color(blue);
-  color: white;
-  width: 100%;
-  text-transform: uppercase;
-  cursor: pointer;
-
-  @media (min-width: $laptop) {
-    height: $h-10;
-    font-size: $text-m;
-  }
-
-  @media (min-width: $desktop) {
-    height: $h-15;
-    font-size: $text-l;
-    border-width: $border-m;
-  }
-
-  &:hover {
+    height: $h-8;
+    border-radius: $rounded-l;
+    border-width: $border-s;
+    border-style: solid;
     border-color: basic-color(purple);
-    background-color: basic-color(light-purple);
-  }
-
-  &:active {
-    border-color: basic-color(purple);
+    font-size: $text-xs;
+    padding: 0 $p-l;
     background-color: basic-color(blue);
-  }
+    color: white;
+    width: 100%;
+    text-transform: uppercase;
+    cursor: pointer;
+
+    @media (min-width: $laptop) {
+        height: $h-10;
+        font-size: $text-m;
+    }
+
+    @media (min-width: $desktop) {
+        height: $h-15;
+        font-size: $text-l;
+        border-width: $border-m;
+    }
+
+    &:hover {
+        border-color: basic-color(purple);
+        background-color: basic-color(light-purple);
+    }
+
+    &:active {
+        border-color: basic-color(purple);
+        background-color: basic-color(blue);
+    }
 }

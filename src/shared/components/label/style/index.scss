@@ -1,61 +1,61 @@
-@use "../../../../styles/variables" as *;
+@use '../../../../styles/variables' as *;
 
 .label {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  width: 100%;
-
-  &__text {
-    font-size: $text-xs;
-
-    @media (min-width: $laptop) {
-      font-size: $text-s;
-    }
-
-    @media (min-width: $desktop) {
-      font-size: $text-m;
-    }
-  }
-
-  &__value {
     display: flex;
-    align-items: center;
-    border-style: solid;
+    flex-direction: column;
+    justify-content: start;
+    width: 100%;
 
-    border-width: $border-s;
-    border-radius: $rounded-l;
-    font-size: $text-s;
-    height: $h-8;
-    padding: 0 $p-l;
+    &__text {
+        font-size: $text-xs;
 
-    @media (min-width: $laptop) {
-      font-size: $text-m;
-      height: $h-10;
-      padding: 0 $p-l;
+        @media (min-width: $laptop) {
+            font-size: $text-s;
+        }
+
+        @media (min-width: $desktop) {
+            font-size: $text-m;
+        }
     }
 
-    @media (min-width: $desktop) {
-      border-width: $border-m;
-      font-size: $text-l;
-      height: $h-15;
-      padding: 0 $p-l;
-    }
-  }
-
-  &_blue & {
     &__value {
-      background-color: basic-color(purple);
-      color: white;
-      border-color: basic-color(blue);
-    }
-  }
+        display: flex;
+        align-items: center;
+        border-style: solid;
 
-  &_yellow & {
-    &__value {
-      background-color: basic-color(yellow);
-      color: black;
-      border-color: basic-color(purple);
+        border-width: $border-s;
+        border-radius: $rounded-l;
+        font-size: $text-s;
+        height: $h-8;
+        padding: 0 $p-l;
+
+        @media (min-width: $laptop) {
+            font-size: $text-m;
+            height: $h-10;
+            padding: 0 $p-l;
+        }
+
+        @media (min-width: $desktop) {
+            border-width: $border-m;
+            font-size: $text-l;
+            height: $h-15;
+            padding: 0 $p-l;
+        }
     }
-  }
+
+    &_blue & {
+        &__value {
+            background-color: basic-color(purple);
+            color: white;
+            border-color: basic-color(blue);
+        }
+    }
+
+    &_yellow & {
+        &__value {
+            background-color: basic-color(yellow);
+            color: black;
+            border-color: basic-color(purple);
+        }
+    }
 }

@@ -1,78 +1,78 @@
-@use "../../../styles/variables" as *;
+@use '../../../styles/variables' as *;
 
 .splash-screen__wrapper {
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  inset: 0;
-  z-index: 10000;
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  background-color: rgba(255, 255, 255, 0.1);
-  transition: all 500ms ease-in-out;
-  opacity: 1;
-  visibility: opacity;
-  text-transform: uppercase;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    inset: 0;
+    z-index: 10000;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    background-color: rgba(255, 255, 255, 0.1);
+    transition: all 500ms ease-in-out;
+    opacity: 1;
+    visibility: opacity;
+    text-transform: uppercase;
 
-  h1 {
-    font-size: $text-xl;
+    h1 {
+        font-size: $text-xl;
 
-    @media (min-width: $laptop) {
-      font-size: $text-2xl;
+        @media (min-width: $laptop) {
+            font-size: $text-2xl;
+        }
+
+        @media (min-width: $desktop) {
+            font-size: $text-3xl;
+        }
     }
 
-    @media (min-width: $desktop) {
-      font-size: $text-3xl;
-    }
-  }
+    h2 {
+        font-size: $text-l;
 
-  h2 {
-    font-size: $text-l;
+        @media (min-width: $laptop) {
+            font-size: $text-xl;
+        }
 
-    @media (min-width: $laptop) {
-      font-size: $text-xl;
+        @media (min-width: $desktop) {
+            font-size: $text-2xl;
+        }
     }
-
-    @media (min-width: $desktop) {
-      font-size: $text-2xl;
-    }
-  }
 }
 
 .splash-screen__wrapper.invisiable {
-  opacity: 0;
-  visibility: hidden;
+    opacity: 0;
+    visibility: hidden;
 }
 
 .won-splash-screen {
-  display: flex;
-  flex-direction: column;
-  gap: $gap-l;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-l;
+    align-items: center;
 
-  @media (min-width: $laptop) {
-    gap: $gap-xl;
-  }
+    @media (min-width: $laptop) {
+        gap: $gap-xl;
+    }
 
-  @media (min-width: $desktop) {
-    gap: $gap-2xl;
-  }
+    @media (min-width: $desktop) {
+        gap: $gap-2xl;
+    }
 }
 
 .lost-splash-screen {
-  display: flex;
-  flex-direction: column;
-  gap: $gap-l;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: $gap-l;
+    align-items: center;
 
-  @media (min-width: $laptop) {
-    gap: $gap-xl;
-  }
+    @media (min-width: $laptop) {
+        gap: $gap-xl;
+    }
 
-  @media (min-width: $desktop) {
-    gap: $gap-2xl;
-  }
+    @media (min-width: $desktop) {
+        gap: $gap-2xl;
+    }
 }

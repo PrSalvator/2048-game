@@ -1,24 +1,24 @@
-@use "../../../../styles/variables" as *;
+@use '../../../../styles/variables' as *;
 
 $icon-l: 48px;
 $icon-m: 24px;
 $icon-s: 16px;
 
 .icon {
-  width: $icon-s;
-  height: $icon-s;
+    width: $icon-s;
+    height: $icon-s;
 
-  @media (min-width: $laptop) {
-    width: $icon-m;
-    height: $icon-m;
-  }
+    @media (min-width: $laptop) {
+        width: $icon-m;
+        height: $icon-m;
+    }
 
-  @media (min-width: $desktop) {
-    width: $icon-l;
-    height: $icon-l;
-  }
-  s svg {
-    width: 100%;
-    height: auto;
-  }
+    @media (min-width: $desktop) {
+        width: $icon-l;
+        height: $icon-l;
+    }
+    s svg {
+        width: 100%;
+        height: auto;
+    }
 }

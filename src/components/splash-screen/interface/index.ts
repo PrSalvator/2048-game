@@ -1,5 +1,5 @@
 interface ISplashScreenProps {
-  score: number;
+    score: number;
 }
 
 export type { ISplashScreenProps };

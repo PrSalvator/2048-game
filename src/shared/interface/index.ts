@@ -4,8 +4,8 @@
  * @property {number} column - Номер колонки (начинается с 0)
  */
 interface ICoordinates {
-  row: number;
-  column: number;
+    row: number;
+    column: number;
 }
 
 export type { ICoordinates };
